@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { CouchbaseLite } from '@ionic-native/couchbase-lite';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Rx'
 
 @Injectable()
 export class CouchbaseProvider {
@@ -40,8 +40,8 @@ export class CouchbaseProvider {
     let url = this.getUrl();
     url = url + CouchbaseProvider.DATA_BASE;
     return this._http
-      .put(url)
-      .map(data => { 
+      .put(url, null)
+      .map(data => {
         this.results = data['results'];
         console.log("HOLA MUNDO")
       })
@@ -115,7 +115,7 @@ export class CouchbaseProvider {
 
   deleteDocument(document) {
     let url = this.getUrl();
-    url = url + CouchbaseProvider.DATA_BASE + '/' + document._id + '?rev=' + doc._rev;
+    url = url + CouchbaseProvider.DATA_BASE + '/' + document._id + '?rev=' + document._rev;
     return this._http
       .delete(url)
       .map(data => { this.results = data['results'] })
