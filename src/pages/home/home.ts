@@ -1,3 +1,4 @@
+import { CouchbaseProvider } from './../../providers/person/person';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -7,7 +8,14 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  nombre:string;
+  edad:number;
+
+  constructor(public navCtrl: NavController, private couchPro: CouchbaseProvider) {
+    
+  }
+
+  saveInfo() {
 
   }
 
